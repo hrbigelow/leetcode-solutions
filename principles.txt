@@ -1,0 +1,39 @@
+Principles
+
+Any time you know there is a limit on the range of values in an array, then
+sorting it or finding the top K elements can be in O(N) time rather than O(N
+log N), since you can use a radix sort approach
+
+Examples:  347
+
+
+Whenever you can recognize a nested interval structure in a problem, a stack
+applies.  The simplest example of this is to number the positions of matching
+parentheses in a string using a stack.
+
+Examples:  85
+
+
+Once you have a solution, ask whether your intermediate calculations are being
+calculated too early, or released too late.  Especially in array processing,
+sometimes the result array may be able to be constructed in stages and the
+space used for the result array doubling as an intermediate calcualtion.
+
+Examples:  238
+
+
+Don't forget the 'shrinking search space' approach.  Most problems can be
+conceptualized as finding an element of a 'search space'.  For instance,
+finding a subarray of an array maximizing some quantity, the search space
+consists of all i, j such that 0 <= i < n, 0 <= j < n, i < j.  This can be
+visualized as the upper triangle, not including diagonal, of the i, j matrix.
+If you can make arguments about which elements in this space are bounded by
+other elements, then you can strategically evaluate only a subset of elements
+to shrink the search space.
+
+Example:  11
+
+
+
+
+

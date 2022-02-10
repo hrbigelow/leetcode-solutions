@@ -41,6 +41,15 @@ each element, the greatest preceding element less than it.
 
 For the skyline, this is equivalent to extending a given
 rectangle (whose element is the current height) as far back
-as it can go
+as it can go.
+
+To see why this involves "nested structure", imagine instead an
+arbitrary function and searching for the maximal rectangle under it.
+Each candidate rectangle would be defined by its top edge, which must
+touch the graph at both end points.  You would note that drawing
+all such edges which touch the graph creates a nested structure.
+
+This nested structure is harder to see for a piecewise-constant graph,
+but it does exist.
 
 """
