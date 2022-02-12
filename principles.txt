@@ -34,6 +34,22 @@ to shrink the search space.
 Example:  11
 
 
+When it doesn't seem like there is a clever solution, there may not be.  One
+line of thinking is the pessimistic one, which is to try to establish a minimum
+complexity for a given task.  In the shortest word distance problem (244), you
+could note that in the worst case, you need to know every location for each 
+
+Example: 244
+
+
+When doing complex loop processing, make sure you distinguish between
+situations that need only test a single element at a time, vs those that
+must test a pair (or larger window).  In the latter case, consider using the
+main loop variable to represent either the first or second element of that
+window, and use whatever is most convenient.
+
+Example: 443
+
 
 
 
