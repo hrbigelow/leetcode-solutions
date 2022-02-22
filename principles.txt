@@ -51,5 +51,19 @@ window, and use whatever is most convenient.
 Example: 443
 
 
+Recursive problems all have an aspect of a 'leap of faith'.  You first assume
+that you *already have a function* that can solve a subproblem of your problem.
+But, this function may need to provide (through returning, or a global variable)
+some auxiliary information needed to glue the subproblem(s) together to form
+the solution of the main problem.  For example, in the 'Flatten Binary Search
+Tree' problem, it's clear that if you can flatten the left subtree and flatten
+the right subtree, you could glue them together in tandem from the node.
+However, in order to do this conveniently, you need to know the leaf node for
+the two flattened subtrees.  You need to know the left leaf node, because it
+then gets attached to the right subtree.  You need to know the right leaf node 
+because it becomes the main leaf node of the main tree, and thus return it.
+
+Example: 114
+
 
 
