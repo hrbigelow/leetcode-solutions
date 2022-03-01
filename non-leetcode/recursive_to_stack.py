@@ -1,9 +1,9 @@
-def f(n):
+def fibonacci(n):
     if n < 3:
         return 1
     else:
-        a = f(n-1)
-        b = f(n-2)
+        a = fibonacci(n-1)
+        b = fibonacci(n-2)
         ret = a + b
         return ret
 
@@ -23,7 +23,7 @@ class CallState:
 
 import time
 
-def fs(n):
+def fibonacci_stack(n):
     
     st = [CallState(n, 'top', None, None, None)]
 
