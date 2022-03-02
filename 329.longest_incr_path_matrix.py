@@ -33,6 +33,22 @@ class Solution:
         return max(el for row in lplen for el in row)
     
 """
+First thought this would not be memo-izable, because the longest path starting from
+any particular position might not be the same if it were a continuation of two different
+paths.  Also I was thinking about the 'visited' array, and realized you don't actually need it!
+Since the paths must be strictly increasing, there is no possibility of cycles.
+
+This then lead to realizing that prefixes don't interfere with the longest path starting at
+a given point, therefore the whole thing was cacheable.
+
+I then wrote a dfs with memoization.  However, since the matrix was possibly 200 x 200 I worried
+that there could be stack overflow.  I tried it and it succeeded anyway.  I briefly tried BFS, but
+realized that is difficult to implement since one needs to *return* the length rather than pass it
+down.
+
+It is of course possible to do an explicit stack dfs, but that is pretty hard.
+
+
 19 min: first draft
 25 min: realized dfs may cause stack overflow, trying anyway
 29 min: finished
