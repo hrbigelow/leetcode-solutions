@@ -8,7 +8,24 @@ class TreeNode:
         return str(self.val)
 
 
+# make a tree from Leetcode's tree value representation
+# for example, [3, 9, 20, None, None, 15, 7]
+def make_tree(vals):
+    nodes = [None if val is None else TreeNode(val) for val in vals]
 
+    i, j = 0, 1
+    while j != len(nodes):
+        parent = nodes[i]
+        if parent is not None:
+            parent.left = nodes[j]
+            parent.right = nodes[j+1]
+            j += 2
+        i += 1
+
+    return nodes[0]
+
+
+# for each node, calculate the maximal distance to any leaf
 def max_heights(root):
     heights = {}
     
@@ -40,24 +57,9 @@ class StackState:
         self.ret = None
 
 
-# 
-
-def make_tree(vals):
-    nodes = [None if val is None else TreeNode(val) for val in vals]
-
-    i, j = 0, 1
-    while j != len(nodes):
-        parent = nodes[i]
-        if parent is not None:
-            parent.left = nodes[j]
-            parent.right = nodes[j+1]
-            j += 2
-        i += 1
-
-    return nodes[0]
 
 
-
+# same as max_heights, but using explicit stack version of dfs
 def max_heights_stack(root):
     heights = {}
 
