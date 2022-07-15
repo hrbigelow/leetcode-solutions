@@ -1,3 +1,9 @@
+"""
+Given two integer arrays nums1 and nums2, return the maximum length of a
+subarray that appears in both arrays.
+
+"""
+
 class Solution:
     def findLength(self, nums1: List[int], nums2: List[int]) -> int:
         n1 = len(nums1)
