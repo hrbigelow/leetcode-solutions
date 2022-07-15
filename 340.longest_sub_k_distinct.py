@@ -1,3 +1,8 @@
+"""
+Given a string s and an integer k, return the length of the longest substring
+of s that contains at most k distinct characters.
+"""
+
 class Solution:
     def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
         if k == 0: return 0
