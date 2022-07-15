@@ -1,4 +1,12 @@
 """
+Given an integer array nums, find the contiguous subarray (containing at least
+one number) which has the largest sum and return its sum.
+
+A subarray is a contiguous part of an array.
+
+"""
+
+"""
 Dynamic Programming:
 
 The max subarray must end at one of the positions 0 through n-1.
