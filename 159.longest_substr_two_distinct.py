@@ -1,3 +1,9 @@
+"""
+Given a string s, return the length of the longest substring that contains at
+most two distinct characters.
+
+"""
+
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         start_index = 0
