@@ -1,4 +1,10 @@
 """
+Given n pairs of parentheses, write a function to generate all combinations of
+well-formed parentheses.
+
+"""
+
+"""
 Took about 25 minutes to implement both recursive and iterative approaches.  I first
 implemented a DFS recursive approach, then just used a typical conversion tactic to
 convert it to a deque-based BFS.

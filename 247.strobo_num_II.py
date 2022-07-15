@@ -1,3 +1,11 @@
+"""
+Given an integer n, return all the strobogrammatic numbers that are of length
+n. You may return the answer in any order.
+
+A strobogrammatic number is a number that looks the same when rotated 180
+degrees (looked at upside down).
+"""
+
 class Solution:
     def findStrobogrammatic(self, n: int) -> List[str]:
         results = []
