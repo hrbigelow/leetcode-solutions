@@ -1,0 +1,14 @@
+Union-find is a lightweight way to count the number of connected components in a very
+specific kind of graph.
+
+The graph is a forest in which each node has an out-degree of 1, with the semantics
+that the edge points to the node's parent.  By convention, a node pointing to itself
+is considered the 'root' of a tree.
+
+At start, every node is a root.  As the algorithm progresses, groups of nodes form a
+single tree.  The operation of joining two nodes first finds each of their respective
+roots of the trees they belong, and then grafts one of those roots onto the other,
+joining them in a single tree.
+
+At the end, one wants to find the roots of each node to label them as belonging to a
+particular tree.

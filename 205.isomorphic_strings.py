@@ -11,19 +11,8 @@ character, but a character may map to itself.
 """
 
 """
-Given two strings s and t, determine if they are isomorphic.
-
-Two strings are isomorphic if the characters in s can be replaced to get t.
-
-All occurrences of a character must be replaced with another character while
-preserving the order of characters. No two characters may map to the same
-character but a character may map to itself.
-
 The mapping may be expressed using a single dictionary, with the restriction
 that no two keys can map to the same value.
-
-
-
 """
 
 
