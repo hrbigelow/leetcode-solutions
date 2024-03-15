@@ -1,0 +1,17 @@
+Tips
+
+1.  If the problem is API / transactional, some internal state must be maintained
+between API calls, either written to or read from.  This state should be the minimal
+possible information needed to service *all* API calls.
+
+2.  Read the entire problem and have a spec worked out *before* coding anything.
+
+3.  If the state involves hierarchy, write out the schema for the state and
+experiment until you like it.
+
+4.  Look at the scale of the problem factors (i.e. n <= 5000)  If they are small-ish,
+there is no need to over-optimize.
+
+5.  I expect the algorithm will be obvious and not require fancy tricks.
+
+

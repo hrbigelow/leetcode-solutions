@@ -1,0 +1,645 @@
+https://leetcode.com/problems/product-of-array-except-self/description/
+Compute left and right cumulative products, using [1] as seed
+
+https://leetcode.com/problems/happy-number/description/
+Iterate until cycle detected:  convert number into sum of squares of its digits
+
+https://leetcode.com/problems/factorial-trailing-zeroes/description/
+We want to know the total number of factors of 2 and 5 in all the numbers
+between 2 and n inclusively.  The number of factors of 10 is the lesser of those
+two numbers.  This can be guaranteed to be the factors of 5.  So
+count the number of factors of 5 in the numbers between 2 and n.
+
+https://leetcode.com/problems/subsets-ii/description/
+Return all possible subsets of the given array nums (which may contain duplicates)
+Backtracking using a growing subset variable
+Use Counter(nums), and do a structured recursion on each key.
+For each key, recurse using 0, 1, ..., ct times.
+Extend the current path
+
+https://leetcode.com/problems/move-zeroes/description/
+Transform [1, 3, 0, 5, 0, 0, 2, 8] to [1, 3, 5, 2, 8, 0, 0, 0]
+Loop over all elements, maintaining a 'next write position'.  Whenever
+current element is non-zero, perform a swap with next-write-position and
+advance it.
+
+https://leetcode.com/problems/power-of-two/description/
+I didn't know the twos-complement trick.  You can also just right-shift
+until the first 1 is detected.  Then, test for equality with 1
+
+https://leetcode.com/problems/powx-n/description/
+Consider the binary representation of n as whether or not to
+include the i'th power of x.  In a loop, compute the next power of x,
+and include or not based on that bit value of n
+
+https://leetcode.com/problems/palindrome-number/description/
+Decompose the number iteratively using divmod.  At the same time,
+compose the new number from the divmod components.  Test equality at the end.
+
+https://leetcode.com/problems/reverse-integer/description/
+reverse the digits of the integer
+Use the decompose/build loop with divmod.  But, you must first convert
+arguments to positive, then adjust as necessary at the end.
+
+https://leetcode.com/problems/factor-combinations/description/
+Return the distinct sets of all possible combinations of a number's factors.
+Use backtracking with walk(path, remain).  Recurse on all possible values in range(2,
+remain+1) that are factors of remain.
+
+https://leetcode.com/problems/restore-ip-addresses/description/
+Input: s = "25525511135"
+Output: ["255.255.11.135","255.255.111.35"]
+Use backtracking, recursing on the next 1, 2, or 3 digits, whichever chunks yield a
+valid number in [1, 255].  Tricky thing is the end criterion
+
+https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+Input: digits = "23"
+Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+Basic recursion / backtracking
+
+https://leetcode.com/problems/combinations/description/
+Given two integers n and k, return all possible combinations of k numbers chosen from
+the range [1, n].
+Input: n = 4, k = 2
+Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+Use backtracking, with a nested recursion pattern dfs(path, start) recurses on
+start in range(start+1, n+1)
+
+https://leetcode.com/problems/combination-sum-iii/description/
+Find all valid combinations of k numbers that sum up to n such that the following
+conditions are true:
+Only numbers 1 through 9 are used.
+Each number is used at most once.
+
+Input: k = 3, n = 9
+Output: [[1,2,6],[1,3,5],[2,3,4]]
+Explanation:
+1 + 2 + 6 = 9
+1 + 3 + 5 = 9
+2 + 3 + 4 = 9
+
+https://leetcode.com/problems/combination-sum/
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+(candidates are distinct, can use each one unlimited number of times)
+dfs(combo, start, total)
+Backtracking, reusing the start position, but with increased total
+
+https://leetcode.com/problems/permutations-ii/description/
+Given a collection of numbers, nums, that might contain duplicates, return all
+possible unique permutations in any order.
+Input: nums = [1,1,2]
+Output:
+[[1,1,2],
+ [1,2,1],
+ [2,1,1]]
+Use avail = Counter(nums) as the state associated with each node.
+The child nodes are all keys with avail[key] > 0, decrementing the count by 1.
+
+https://leetcode.com/problems/permutations/description/
+Given an array nums of distinct integers, return all the possible permutations. You
+can return the answer in any order.
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+Just use backtracking with walk(perm, avail).  perm is an array, avail is a set.
+Recursion is to pop each element from avail, then put it back.
+
+https://leetcode.com/problems/maximum-product-of-word-lengths/description/
+Given a string array words, return the maximum value of length(word[i]) *
+length(word[j]) where the two words do not share common letters. If no such two words
+exist, return 0.
+Input: words = ["abcw","baz","foo","bar","xtfn","abcdef"]
+Output: 16
+Explanation: The two words can be "abcw", "xtfn".
+First, note the symmetry that any two words that have the same letter histogram can
+be collapsed to one with no change to the problem.
+Use a bitmask to index the word letter content.
+Then just a simple nested loop.
+
+https://leetcode.com/problems/single-number/description/
+Given a non-empty array of integers nums, every element appears twice except for one.
+Find that single one.  You must implement a solution with a linear runtime complexity
+and use only constant extra space.
+
+Note that nums[0] ^ nums[1] ^ ... ^ nums[n-1] will produce that single number
+because every other number will contribute a net change of zero to any bit field.
+
+https://leetcode.com/problems/course-schedule-ii/description/
+Given a set of prerequisite pairs, return the topographic sorting of courses.
+Use the NEW, PENDING, DONE version of DFS to detect cycles in the context of possibly
+disconnected components.  Secondly, append each node to a topo array just before
+returning from the dfs call.  (The 'return' is like 'I've finished all the
+sub-courses, not I can take this one)
+
+https://leetcode.com/problems/course-schedule/description/
+Same as course-schedule-ii except it's just cycle detection.  Use the NEW, PENDING,
+DONE version of DFS.
+
+https://leetcode.com/problems/clone-graph/description/
+Return a deep copy of the connected undirected graph
+Use bfs, putting only the nodes of the original graph on the deque.  Here, the
+'visited' array can actually be implemented instead using a map of node =>
+cloned_node.  At each traversal (popleft call), clone the node if necessary.  Clone
+the edge regardless.  (Note that bfs traverses each edge exactly once)
+
+https://leetcode.com/problems/range-sum-query-immutable/description/
+Write a class to support multiple range sum queries (return the sum of nums[i:j])
+Just pre-compute cumulative sum, and compute range-sum as difference between two
+cumulative sums.
+
+https://leetcode.com/problems/design-add-and-search-words-data-structure/description/
+Design a data structure that supports adding new words and finding if a string
+matches any previously added string.
+This is just a trie implementation.  I used a '*' to denote a sentinel (end-of-word)
+token.  Don't try to re-use code trivially, just write it all out.
+
+https://leetcode.com/problems/implement-trie-prefix-tree/description/
+Implement the `insert`, `search`, and `startsWith` API calls of a Prefix Trie.
+Again, this is straight-forward as long as you don't try to get fancy avoiding code
+repetition.
+
+https://leetcode.com/problems/range-addition/description/
+You are given an integer length and an array updates where updates[i] = [startIdxi, endIdxi, inci].
+You have an array arr of length length with all zeros, and you have some operation to
+apply on arr. In the ith operation, you should increment all the elements
+arr[startIdxi], arr[startIdxi + 1], ..., arr[endIdxi] by inci.
+Return arr after applying all the updates.
+
+Input: length = 5, updates = [[1,3,2],[2,4,3],[0,2,-2]]
+Output: [-2,0,3,5,3]
+
+Compile each update into a pair of temporal 'events' (one an increase, one a
+decrease).  Then, sort the events, iterate through them, maintaining a current value,
+and a previous time.  Maintain a write index for the result array.  At each
+iteration, if the current time is different from previous, write current value to the
+next stretch of the array.  This only visits each element in the array once.  Waiting
+for the advance avoids multiple adds and subtracts to the same element of the result
+array.
+
+https://leetcode.com/problems/meeting-rooms-ii/description/
+Given an array of meeting time intervals intervals where intervals[i] = [starti,
+endi], return the minimum number of conference rooms required.
+Compile each interval into a start and end 'event' which increment and decrement a
+'concur' variable.  These events need to be sorted.  Then, they are scanned through,
+maintaining a num_concur variable, and taking the max every time the current time is
+different from previous time.
+
+https://leetcode.com/problems/meeting-rooms/description/
+Given an array of meeting time intervals where intervals[i] = [starti, endi],
+determine if a person could attend all meetings.
+This is simply:  1) sort the intervals, 2) scan each pair of consecutive intervals to
+see if they overlap
+
+https://leetcode.com/problems/merge-k-sorted-lists/
+The famous problem!  Use a min-heap to contain the next nodes for each of the k
+linked lists.  Consume the next (min) one in the heap, advance that one if there is a
+next.  Tricky thing is, you need a 'ComparableNode' class to wrap these nodes.
+I couldn't figure out how to avoid that.
+
+https://leetcode.com/problems/largest-bst-subtree/
+Given the root of a binary tree, find the largest subtree, which is also a Binary
+Search Tree (BST), where the largest means subtree has the largest number of nodes.
+
+This uses a bottom-up recursion that returns is_bst, min_val, max_val, tree_size.
+From this, you can assemble all four of those answers at any given node.  Separately,
+for any visit that is_bst, update the maximum size seen.
+
+https://leetcode.com/problems/find-leaves-of-binary-tree/description/
+Given the root of a binary tree, collect a tree's nodes as if you were doing this:
+Collect all the leaf nodes.
+Remove all the leaf nodes.
+Repeat until the tree is empty.
+Note that a node's 'height' is how far away it is from a leaf.  The recursion returns
+the node's height.  From this, we can update the global 'results' array every time a
+given node's height is determined.  If we collect lowest-to-highest, this is just
+collecting the node in results[height] just before returning.  Can just use append on
+results.
+
+https://leetcode.com/problems/inorder-successor-in-bst/description/
+Given the root of a binary search tree and a node p in it, return the in-order
+successor of that node in the BST. If the given node has no in-order successor in the
+tree, return null.
+
+This is subtle and has two separate things going on.  One, we maintain an upper bound
+on the successor node.  Second, we eliminate sub-trees that cannot contain the
+successor node.
+
+https://leetcode.com/problems/same-tree/description/
+Given the roots of two binary trees p and q, write a function to check if they are
+the same or not.
+Trick here is to implement a dfs recursion that recurses in tandem on both trees.
+
+https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
+Compute the maximum depth of the binary tree.
+This is straightforward recursive approach using a function that returns maximum
+depth from the two maximum depths of its children.
+
+https://leetcode.com/problems/binary-tree-paths/description/
+Given the root of a binary tree, return all root-to-leaf paths in any order.
+Straightforward recursion.  Only thing special is, we explicitly test for leaves, and
+don't recurse on null nodes.
+
+https://leetcode.com/problems/closest-binary-search-tree-value/description/
+Given the root of a binary search tree and a target value, return the value in the
+BST that is closest to the target. If there are multiple answers, print the smallest.
+Note that the closest value will either be the current node's value, or among exactly
+one of the sub-trees (whichever one is on the same side of current node as target)
+
+https://leetcode.com/problems/count-complete-tree-nodes/description/
+Given the root of a complete binary tree, return the number of the nodes in the tree.
+Pure recursive approach.  Key insight is to compute height of 'left leg' of each
+child tree.  (the path going all the way left).  If they are the same, then left tree
+is complete, recurse on right.  Return the left leg height so you can compute the
+size using exponential.  If different, then right tree is complete, recurse on left.
+
+https://leetcode.com/problems/sum-root-to-leaf-numbers/description/
+- You are given the root of a binary tree containing digits from 0 to 9 only.
+- Each root-to-leaf path in the tree represents a number.
+- For example, the root-to-leaf path 1 -> 2 -> 3 represents the number 123.
+- Return the total sum of all root-to-leaf numbers. Test cases are generated so that
+the answer will fit in a 32-bit integer.
+DFS again, but explicitly testing a node for leaf-hood.  We can still recurse on a
+None node, but nothing happens.
+
+https://leetcode.com/problems/unique-binary-search-trees/description/
+Given an integer n, return the number of structurally unique BST's (binary search
+trees) which has exactly n nodes of unique values from 1 to n.
+Formulating the recurrence relation here is key:
+N(0) = 1
+N(1) = 1
+N(k) = sum(N(j) * N(k-j-1) for j in range(k))
+Memoizing the results is necessary
+
+https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+You are given a perfect binary tree where all leaves are on the same level, and every
+parent has two children. The binary tree has the following definition:
+
+struct Node {
+  int val;
+  Node *left;
+  Node *right;
+  Node *next;
+}
+Use BFS, keeping track of prev_node and prev_depth.  If same, then
+initialize prev_node.next = node
+
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
+Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+Use a bottom-up DFS that returns p_seen, q_seen tuple.  As soon as both p_seen and
+q_seen are true, you can set lca.  Note that, because this is a bottom up, you cannot
+early-stop.  Just don't re-set lca
+
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/
+Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two
+given nodes in the BST.
+Note that if both p.val and q.val are on the same side of node.val, then p and q are
+contained in that sided subtree, and you can move down.
+
+https://leetcode.com/problems/binary-tree-right-side-view/description/
+Given the root of a binary tree, imagine yourself standing on the right side of it,
+return the values of the nodes you can see ordered from top to bottom.
+
+Traverse using DFS but right-to-left.  Then, at each new depth, add the first node
+encountered. 
+
+https://leetcode.com/problems/binary-search-tree-iterator/description/
+Implement an iterator for in-order traversal of a binary tree.
+Intuition is to simulate the call stack state for the real iteration.  But, note that
+in a real DFS iteration, each stack frame would not only have the current node, but
+also record the code pointer position among two possibilities.  Here, the presence of
+a node in the stack indicates the first of the two.
+
+https://leetcode.com/problems/symmetric-tree/description/
+Detect whether the binary tree is symmetric
+This is just tandem DFS
+
+https://leetcode.com/problems/balanced-binary-tree/description/
+Given a binary tree, determine if it is height-balanced.
+(depth of two subtrees never differs by more than 1)
+Straightforward recursion.  For this you need to return the height, and whether it's
+height balanced.
+
+https://leetcode.com/problems/minimum-depth-of-binary-tree/description/
+Find the minimum depth.  The minimum depth is the number of nodes along the shortest
+path from the root node down to the nearest leaf node.
+This is straightforward recursion, but requires explicit test for leaf.  Base
+case of a leaf is to return 1.  None should return inf because it doesn't count
+towards the minimum.
+
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/
+Given an integer array nums where the elements are sorted in ascending order, convert
+it to a height-balanced binary search tree.
+Straightforward recursion.  Divide the array into left, center, right (with center
+being a single node).  Return the root of the built sub-trees and connect the the
+current node.
+
+https://leetcode.com/problems/path-sum-ii/description/
+Given the root of a binary tree and an integer targetSum, return all root-to-leaf
+paths where the sum of the node values in the path equals targetSum. Each path should
+be returned as a list of the node values, not node references.
+
+Since the node values can be negative or positive, there is no early stopping.  Need
+to just do full recursion.  Need explicit test for leaf.  Recursion doesn't return
+anything - it updates path and budget in a backtracking style.
+
+https://leetcode.com/problems/path-sum/description/
+Given the root of a binary tree and an integer targetSum, return true if the tree has
+a root-to-leaf path such that adding up all the values along the path equals
+targetSum.
+
+This is easier since no need to record the path itself.  Just return True or False if
+the correct path sum was found.
+
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
+Flatten the binary tree to a linked list.
+
+The recursion needs to both flatten the subtree and also return the tail, so the left
+and right flattened sub-trees can be joined into one.  Performing the join is very
+tricky.  Also, watch out what you return.
+
+https://leetcode.com/problems/validate-binary-search-tree/description/
+Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+Note here that in a recursive solution, if you know that the left and right sub-trees
+are both valid, you also need to know their extents, and that the assembly is valid.
+Alternatively, you can do a top-down approach where you test that the tree is both
+valid and within certain bounds determined in the call:  dfs(node, low, high)
+
+https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/description/
+Given the root of a binary tree, return the length of the longest consecutive
+sequence path.
+Straightforward recursion using current path length, which resets to 1 if child is
+not consecutive from parent.
+
+https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+Given the root of a binary search tree, and an integer k, return the kth smallest
+value (1-indexed) of all the values of the nodes in the tree.
+skipped
+
+https://leetcode.com/problems/invert-binary-tree/description/
+Given the root of a binary tree, invert the tree, and return its root.
+Pure recursive.  Just recurse, then swap left, right children.
+
+https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+Given the root of a binary tree, return the level order traversal of its nodes'
+values. (i.e., from left to right, level by level).
+BFS keeping track of level.  If level == len(results), create a new row
+
+https://leetcode.com/problems/n-ary-tree-postorder-traversal/description/
+Given the root of an n-ary tree, return the postorder traversal of its nodes' values.
+This is pure recursive returning a List
+
+https://leetcode.com/problems/binary-tree-preorder-traversal/description/
+Can do impure or pure.  Either return, or update an array in the pre-order order.
+
+https://leetcode.com/problems/rotate-image/description/
+You are given an n x n 2D matrix representing an image, rotate the image by 90
+degrees (clockwise).
+View as concentric squares.  You will then divide each square up by four sides,
+but leaving off the last element of each side.  Then, write a swap4 function for
+swapping at a given offset to rotate these
+(I don't get what I did with the 'half_side' idea)
+
+https://leetcode.com/problems/search-a-2d-matrix/description/
+Return whether a given target value occurs in a non-decreasing 2d matrix
+(non-decreasing when read like a page of a book)
+Do binary search over range [0, n*m), virtualizing the lookup.
+Since you are looking for a possibly non-existent element, initialize the boundary to
+n*m. 
+
+https://leetcode.com/problems/spiral-matrix-ii/description/
+Given a positive integer n, generate an n x n matrix filled with elements from 1 to
+n2 in spiral order.
+I just did a traversal by value, carefully traversing the spiral.
+
+https://leetcode.com/problems/spiral-matrix/description/
+Given an m x n matrix, return all elements of the matrix in spiral order.
+Nothing elegant, just traversed in spiral order.
+
+https://leetcode.com/problems/set-matrix-zeroes/description/
+Given an m x n integer matrix matrix, if an element is 0, set its entire row and
+column to 0's.
+Use the start cell in each row or column as a flag.  When traversing the cells,
+if you encounter a zero, set the two flags to zero.  When doing that, skip to next
+row.
+Do a second pass, setting each cell accordingly.
+
+https://leetcode.com/problems/guess-number-higher-or-lower/description/
+Given the guess(int) -> int API (returns -1, 0, or 1 if you are too low, just right,
+or too high)
+This is just a binary search for an element (not an insertion point), so use
+inclusive range i, j = 1, n
+
+https://leetcode.com/problems/moving-average-from-data-stream/description/
+Given a stream of integers and a window size, calculate the moving average of all
+integers in the sliding window.
+- Simple deque with summary statistics
+
+https://leetcode.com/problems/sliding-window-maximum/description/
+You are given an array of integers nums, there is a sliding window of size k which is
+moving from the very left of the array to the very right. You can only see the k
+numbers in the window. Each time the sliding window moves right by one position.
+
+Return the max sliding window.
+Maintain a deque of the indexes of elements.  At each step, pop any elements
+superceded by new ones (new ones greater than existing ones in the deque)
+Also, popleft the element falling off the end if it exists.
+
+https://leetcode.com/problems/intersection-of-two-arrays-ii/description/
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each
+element in the result must appear as many times as it shows in both arrays and you
+may return the result in any order.
+Just compile two counts and then take their intersection
+
+https://leetcode.com/problems/intersection-of-two-arrays/description/
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each
+element in the result must be unique and you may return the result in any order.
+Can use sets here since problem asks for unique outputs.
+
+https://leetcode.com/problems/remove-invalid-parentheses/description/
+Given a string s that contains parentheses and letters, remove the minimum number of
+invalid parentheses to make the input string valid.
+
+Return a list of unique strings that are valid with the minimum number of removals.
+You may return the answer in any order.
+
+Input: s = "(a)())()"
+Output: ["(a())()","(a)()()"]
+skipped (too hard)
+
+https://leetcode.com/problems/first-bad-version/
+Binary search to find first bad version.  Since you know it exists,
+start with i, j = 1, n, the inclusive range.  Recall the pattern:
+hi = mid or lo = mid + 1 to guarantee loop termination.
+
+https://leetcode.com/problems/h-index-ii/description/
+Find max h such that at least h papers have all been cited at least h times.
+
+It's sorted in ascending order.  Think of the intersection point of a diagonal line
+going backwards.
+
+https://leetcode.com/problems/h-index/description/
+Same as previous, but unsorted.  We can sort in reverse order and do
+the same idea.
+
+https://leetcode.com/problems/word-pattern/description/
+Input: pattern = "abba", s = "dog cat cat dog"
+Output: true
+
+https://leetcode.com/problems/find-peak-element/description/
+A peak element is an element that is strictly greater than its neighbors.
+Introduce idea of the 'peak segment', i.e. the *segment* that is strictly
+greater than its boundary (think of a stage or pedestal).  You can divide
+it in half by choosing the midpoint and going either left or right
+based on the local slope there.
+
+https://leetcode.com/problems/top-k-frequent-elements/description/
+Given an integer array nums and an integer k, return the k most frequent elements.
+You may return the answer in any order.
+
+Construct counter, then use k-sized min-heap, keyed by frequency
+
+https://leetcode.com/problems/group-shifted-strings/description/
+Create a canonicalization function.  Construct a map of key => [orig, orig, ...]
+
+https://leetcode.com/problems/find-the-duplicate-number/description/
+This is tortoise / hare bullshit
+
+https://leetcode.com/problems/reverse-vowels-of-a-string/description/
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and
+upper cases, more than once.
+- Two pointer marching inwards approach.  Flat while-loop, one test per iteration.
+swap when both pointers are at a vowel.
+
+https://leetcode.com/problems/increasing-triplet-subsequence/description/
+Given an integer array nums, return true if there exists a triple of indices (i, j,
+k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists,
+return false.
+This is really crazy and depends on only three.  But, you maintain three special
+variables that are loop invariants:
+p:  minimum value seen
+q:  smallest value seen which is always greater than p
+r:  smallest value seen which is always greater than p
+
+r doesn't need to be materialized, just return true.
+
+https://leetcode.com/problems/summary-ranges/description/
+
+https://leetcode.com/problems/rectangle-area/description/
+Given the coordinates of two rectilinear rectangles in a 2D plane, return the total
+area covered by the two rectangles.
+Note that the intersection is the product of x-range and y-range 1D intersections.
+
+https://leetcode.com/problems/group-anagrams/description/
+Grouping anagrams is just placing them in an equivalence class defined by
+their sorted tupled counts histos.
+
+https://leetcode.com/problems/basic-calculator/description/
+(hard) 
+Input: s = "(1+(4+5+2)-3)+(6+8)"
+Output: 23
+Doubt I'll be asked this
+
+https://leetcode.com/problems/count-and-say/description/
+The count-and-say sequence is a sequence of digit strings defined by the recursive
+formula:
+
+countAndSay(1) = "1"
+countAndSay(n) is the way you would "say" the digit string from countAndSay(n-1),
+which is then converted into a different digit string.
+
+This is a bottom-up application of the 'say' function
+
+https://leetcode.com/problems/trapping-rain-water/description/
+(hard) no way I'll get this.
+
+https://leetcode.com/problems/candy/description/
+This isn't hard - just realize that the set of constraints can be
+satisfied first going from left-to-right, then right-to-left, without
+invalidating the first ones.
+
+https://leetcode.com/problems/longest-common-prefix/description/
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+https://leetcode.com/problems/majority-element-ii/description/
+
+https://leetcode.com/problems/min-stack/description/
+Design a stack that supports push, pop, top, and retrieving the minimum element in
+constant time.
+Maintain a stack, and another stack of minvals.  Since getMin() doesn't alter the
+stack, there is no need for random access mutation to the main stack.
+
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
+Suppose an array of length n sorted in ascending order is rotated between 1 and n
+times. For example, the array nums = [0,1,2,4,5,6,7] might become:
+
+[4,5,6,7,0,1,2] if it was rotated 4 times.
+[0,1,2,4,5,6,7] if it was rotated 7 times.
+Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the
+array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+
+Given the sorted rotated array nums of unique elements, return the minimum element of
+this array.
+
+This can be solved through binary search.  Use inclusive range l, h = 0, n-1 since
+we are looking for an element known to exist.  But, the rules are beastly hard to
+work out.
+
+https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+Maintain an i,j pointer.  j is the main for loop.  i gets advanced as long as needs
+to be until loop invariant is satisfied.
+
+https://leetcode.com/problems/remove-element/description/
+This is a shift pattern.  Loop over all elements in j.  Copy the qualifying
+ones back to the write position i.
+
+https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/
+Given an integer array nums sorted in non-decreasing order, remove some duplicates
+in-place such that each unique element appears at most twice. The relative order of
+the elements should be kept the same.
+(too complicated to implement during interview)
+
+https://leetcode.com/problems/flatten-nested-list-iterator/description/
+You are given a nested list of integers nestedList. Each element is either an integer
+or a list whose elements may also be integers or other lists. Implement an iterator
+to flatten it.
+
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
